@@ -1,13 +1,12 @@
-import React, { useRef, useState} from 'react'
+import React, { useState } from 'react'
 import * as THREE from 'three'
 import { useSpring, animated } from 'react-spring/three'
 
 const SampleCard = () => {
   const [reverse, setReverse] = useState(0);
-  const ref = useRef(null)
 
-  const { positionY, rotationY } = useSpring({
-    from: { positionY: 0.01, rotationY: Math.PI - (reverse * Math.PI) },
+  const spring  = useSpring({
+    from: { posiY: 0.01, rotaY: Math.PI - (reverse * Math.PI) },
     to: async next => {
       await next({positionY:0.01})
       await next({positionY:0.5})
@@ -23,13 +22,12 @@ const SampleCard = () => {
 
   return (
     <animated.group 
-      ref={ref}
-      position-y={positionY}
-      rotation-y={rotationY}
+      position-y={spring.posiY}
+      rotation-y={spring.rotaY}
       rotation-x={-Math.PI/2}
       onPointerDown={e => {e.stopPropagation()}}
       onPointerUp={e => {e.stopPropagation()}}
-      onClick={(e) => {setReverse(Math.abs(reverse-1));console.log(reverse);}}
+      onClick={e => {setReverse(Math.abs(reverse-1));console.log(reverse);}}
       >
 
       <mesh position={[0, 0, 0.01]}>
