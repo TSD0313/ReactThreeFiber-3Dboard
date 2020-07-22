@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react'
-import * as THREE from 'three'
 import { Canvas } from 'react-three-fiber'
 import styled from 'styled-components'
-import SampleBox from './sampleThing'
+import SampleAnimation from './sampleAnimation'
+import SampleCard from './sampleCard2'
 import Controls from './Controls'
 import Board from './board'
 
@@ -19,9 +19,9 @@ const CanvasApp = () => {
             castShadow
         /> */}
         <Board/>
-        <SampleBox  />
+        <SampleCard  />
         <Controls />
-        <gridHelper args={[100, 100]} />
+        <gridHelper args={[10, 10]} />
       </Canvas>
     </Container>
   )
